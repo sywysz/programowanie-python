@@ -7,11 +7,17 @@ with open("./liczby.txt") as plik:
        
 print(zawartosc)
 
+
+
+
 with open("./liczby.txt") as plik1:
     zawartosc1 = plik1.read().splitlines()
 
 print(zawartosc1)
 print(f'Wartosc o indeksie 6 wynosi: {zawartosc1[5]}')
+
+
+
 
 with open("./liczby.txt") as plik2:
     zawartosc2 = []
