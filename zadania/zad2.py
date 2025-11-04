@@ -7,7 +7,10 @@ with open('C:/Users/364264/Documents/programowanie/programowanie-python/zadania/
     wiek2 = int(czyt_plik.read())
 
 if wiek1 < wiek2:
-    tekst_roznica = f'Pierwszy student jest młodszy od studenta pierwszego o {wiek2 - wiek1} lat(a).'
+    tekst_roznica = f'Pierwszy student jest młodszy od studenta drugiego o {wiek2 - wiek1} lat(a).'
+    print(tekst_roznica)
+else:
+    tekst_roznica = f'Drugi student jest młodszy od studenta pierwszego o {wiek1 - wiek2} lat(a).'
     print(tekst_roznica)
 
 with open('C:/Users/364264/Documents/programowanie/programowanie-python/zadania/wiek2.txt', 'a') as plik:
