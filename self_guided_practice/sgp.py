@@ -5,12 +5,9 @@ import numpy as np
 path_imgw = 'https://danepubliczne.imgw.pl/api/data/synop/station/'
 station_in_database = False
 
-stacje1 = requests.get('https://danepubliczne.imgw.pl/api/data/synop/station')
-print(stacje1)
+stacje_get = list(requests.get('https://danepubliczne.imgw.pl/api/data/synop/station'))
 
-with open('C:/Users/364264/Documents/programowanie/programowanie-python/self_guided_practice/wykaz_stacji.csv', 'r') as f_stac:
-    col_names = ['inne', 'nazwa', 'kod']
-    stacje = pd.read_csv(f_stac, names=col_names)
+stacje = pd.read_json(stacje_get[0]) #NIE DZIALA
 #Wpisanie danych od użytkownika
 #print(stacje.to_string())
 while station_in_database == False:
