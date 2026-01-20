@@ -2,25 +2,41 @@ import requests
 import time
 import pandas as pd
 import numpy as np
+import json
 path_imgw = 'https://danepubliczne.imgw.pl/api/data/synop/station/'
 station_in_database = False
 
-stacje_get = list(requests.get('https://danepubliczne.imgw.pl/api/data/synop/station'))
+def download_data(path):
+    stacje_get = requests.get(path)
+    stacje = json.loads(stacje_get.text)
+    np_stacje = np.array(stacje)
+    return np_stacje
 
-stacje = pd.read_json(stacje_get[0]) #NIE DZIALA
+stacje = download_data(path_imgw)
+
+stacje_lista = []
+for st in stacje:
+    stacje_lista.append(st["id_stacji"])
+
+for st in stacje:
+    print(f'{st["id_stacji"]}              {st["stacja"]}')
+
+print(stacje_lista)
+
 #Wpisanie danych od użytkownika
-#print(stacje.to_string())
 while station_in_database == False:
     user_stacja = input("Wprowadź kod stacji: ")
-    if station_in_database == False:
+    if user_stacja not in stacje_lista:
         print('Spróbuj ponownie')
     else:
         print('Prawidłowo wybrano stację')
+        station_in_database = True
+
 user_path = path_imgw + user_stacja
-print(user_path)
-user_time = input("Wprowadź godzinę zakończenia obserwacji: ")
+user_time = input("Wprowadź godzinę zakończenia obserwacji (równe godziny, np. 17:00 = 17): ")
+
 #Pobieranie danych z IMGW
-    #Sprawdzenie godziny
+
 #time_now = time.time()
     #Jeśli upłynęło 5 minut odśwież w poszukiwaniu nowych danych
         #Dodaj nowy plik csv do folderu z danymi
