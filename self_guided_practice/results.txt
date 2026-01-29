@@ -1,0 +1,8 @@
+Stacja Sandomierz
+Godziny pomiaru: 11-12
+Temperatury pomiaru:
+  0.8
+  1.0
+Średnia temperatura dla stacji Sandomierz (id: 12585) wynosi 0.9°C.
+##########
+##########
